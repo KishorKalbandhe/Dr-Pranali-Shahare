@@ -8,383 +8,226 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --blue:    #1a6eb5;
-      --blue2:   #2589d4;
-      --bluebg:  #eef6fc;
-      --dark:    #0b2c45;
-      --text:    #1e3448;
-      --muted:   #6b8aa0;
-      --border:  #d8eaf5;
-      --white:   #ffffff;
-      --off:     #f8fbfd;
+      --blue:   #1a6eb5;
+      --blue2:  #2589d4;
+      --bluebg: #eef6fc;
+      --dark:   #0b2c45;
+      --text:   #1e3448;
+      --muted:  #6b8aa0;
+      --border: #d8eaf5;
+      --white:  #ffffff;
+      --off:    #f8fbfd;
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 99;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 6%; background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 20px rgba(26,110,181,0.06);
+      padding: 14px 5%;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(26,110,181,0.07);
     }
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-box {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: var(--blue); display: flex; align-items: center;
-      justify-content: center; font-size: 20px;
-    }
-    .logo-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--dark); line-height: 1.2; }
-    .logo-sub  { font-size: .58rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; display: block; }
-    .nav-right { display: flex; align-items: center; gap: 20px; }
-    .nav-phone { font-size: .83rem; font-weight: 600; color: var(--blue); text-decoration: none; }
-    .nav-cta {
-      background: var(--blue); color: #fff; padding: 9px 20px;
-      border-radius: 22px; font-size: .83rem; font-weight: 600;
-      text-decoration: none; transition: background .2s;
-    }
+    .logo-box { width: 36px; height: 36px; border-radius: 9px; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .logo-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--dark); line-height: 1.2; }
+    .logo-sub  { font-size: .56rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-phone { font-size: .8rem; font-weight: 600; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 5px; }
+    .nav-cta { background: var(--blue); color: #fff; padding: 9px 18px; border-radius: 22px; font-size: .8rem; font-weight: 600; text-decoration: none; transition: background .2s; white-space: nowrap; }
     .nav-cta:hover { background: var(--blue2); }
 
-    /* HERO */
+    /* ── HERO ── */
     #hero {
       min-height: 100vh;
       display: grid; grid-template-columns: 1.1fr 0.9fr;
-      align-items: center; padding: 100px 6% 60px;
-      background: linear-gradient(135deg, #f0f7ff 0%, #e4f1fb 100%);
+      align-items: center; gap: 40px;
+      padding: 110px 5% 60px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e2f0fb 100%);
       position: relative; overflow: hidden;
     }
-    /* Decorative dental SVG shapes */
-    .hero-deco {
-      position: absolute; right: 0; top: 0; bottom: 0;
-      width: 50%; opacity: .04; pointer-events: none;
+    /* Soft tooth shapes background */
+    .bg-deco {
+      position: absolute; inset: 0; pointer-events: none; opacity: .035;
     }
     .hero-left { position: relative; z-index: 1; }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 7px;
-      font-size: .71rem; font-weight: 600; letter-spacing: 1px;
+      font-size: .68rem; font-weight: 600; letter-spacing: 1px;
       text-transform: uppercase; color: var(--blue);
       background: rgba(26,110,181,0.09); border: 1px solid rgba(26,110,181,0.2);
-      padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+      padding: 5px 13px; border-radius: 20px; margin-bottom: 18px;
     }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue2); animation: blink 2s infinite; }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 4.2vw, 3.8rem);
-      font-weight: 600; line-height: 1.15; color: var(--dark);
-    }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 600; line-height: 1.15; color: var(--dark); }
     h1 em { font-style: italic; color: var(--blue); }
-    .doc-name {
-      display: block; margin-top: 10px;
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-      font-weight: 400; color: var(--blue);
-    }
-    .reg-tag {
-      display: inline-block; margin-top: 10px;
-      font-size: .72rem; color: var(--muted);
-      background: var(--white); border: 1px solid var(--border);
-      padding: 4px 12px; border-radius: 20px;
-      font-weight: 500; letter-spacing: .3px;
-    }
-    .hero-desc {
-      font-size: .92rem; line-height: 1.8; color: var(--muted);
-      max-width: 420px; margin-top: 18px;
-    }
-    .hero-btns { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-    .btn-blue {
-      background: var(--blue); color: #fff;
-      padding: 13px 28px; border-radius: 28px;
-      font-size: .88rem; font-weight: 600; text-decoration: none;
-      box-shadow: 0 8px 22px rgba(26,110,181,0.25); transition: all .22s;
-    }
+    .doc-name { display: block; margin-top: 8px; font-family: 'Playfair Display', serif; font-size: clamp(1rem, 1.6vw, 1.35rem); font-weight: 400; color: var(--blue); }
+    .reg { display: inline-block; margin-top: 7px; font-size: .7rem; color: var(--muted); background: var(--white); border: 1px solid var(--border); padding: 3px 11px; border-radius: 20px; font-weight: 500; }
+    .hero-desc { font-size: .9rem; line-height: 1.8; color: var(--muted); max-width: 400px; margin-top: 16px; }
+    .hero-btns { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+    .btn-blue { background: var(--blue); color: #fff; padding: 12px 26px; border-radius: 26px; font-size: .86rem; font-weight: 600; text-decoration: none; box-shadow: 0 7px 20px rgba(26,110,181,0.24); transition: all .2s; }
     .btn-blue:hover { background: var(--blue2); transform: translateY(-2px); }
-    .btn-out {
-      border: 2px solid var(--blue); color: var(--blue);
-      padding: 11px 28px; border-radius: 28px;
-      font-size: .88rem; font-weight: 600; text-decoration: none; transition: all .22s;
-    }
+    .btn-out  { border: 2px solid var(--blue); color: var(--blue); padding: 10px 26px; border-radius: 26px; font-size: .86rem; font-weight: 600; text-decoration: none; transition: all .2s; }
     .btn-out:hover { background: var(--blue); color: #fff; }
-
-    .stats-row {
-      display: flex; gap: 0; margin-top: 32px;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 14px; overflow: hidden; max-width: 360px;
-      box-shadow: 0 6px 22px rgba(26,110,181,0.07);
-    }
-    .stat { flex: 1; padding: 16px 12px; text-align: center; border-right: 1px solid var(--border); }
+    .stats-row { display: flex; gap: 0; margin-top: 28px; background: var(--white); border: 1px solid var(--border); border-radius: 13px; overflow: hidden; max-width: 320px; box-shadow: 0 5px 18px rgba(26,110,181,0.07); }
+    .stat { flex: 1; padding: 14px 10px; text-align: center; border-right: 1px solid var(--border); }
     .stat:last-child { border: none; }
-    .stat-n { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 600; color: var(--blue); line-height: 1; }
-    .stat-l { font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+    .stat-n { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 600; color: var(--blue); line-height: 1; }
+    .stat-l { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
-    /* Hero right — photo + dental illustration */
-    .hero-right {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 20px; position: relative; z-index: 1;
-    }
-    .hero-photo {
-      width: 78%; max-width: 340px;
-      aspect-ratio: 3/4;
-      border-radius: 50% 50% 46% 54% / 52% 48% 52% 48%;
-      overflow: hidden;
-      border: 5px solid var(--white);
-      box-shadow: 0 24px 65px rgba(26,110,181,0.18);
-    }
+    .hero-right { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+    .hero-photo { width: 82%; max-width: 320px; aspect-ratio: 3/4; border-radius: 50% 50% 46% 54% / 52% 48% 52% 48%; overflow: hidden; border: 5px solid var(--white); box-shadow: 0 22px 60px rgba(26,110,181,0.17); }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 
-    /* Dental icon cards below photo */
-    .dental-icons {
-      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+    /* ── ICON STRIP ── */
+    .icon-strip {
+      background: var(--dark); padding: 18px 5%;
+      display: flex; justify-content: center; gap: 36px; flex-wrap: wrap;
     }
-    .dico {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 12px; padding: 10px 14px;
-      display: flex; align-items: center; gap: 8px;
-      font-size: .76rem; font-weight: 500; color: var(--dark);
-      box-shadow: 0 4px 14px rgba(26,110,181,0.07);
-    }
-    .dico span { font-size: 1.2rem; }
+    .is-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.75); font-size: .8rem; font-weight: 500; }
+    .is-item span { font-size: 1.1rem; }
 
-    /* DENTAL GRAPHIC SECTION */
-    #dental-graphic {
-      background: var(--dark); padding: 40px 6%;
-      display: flex; align-items: center; justify-content: space-around;
-      flex-wrap: wrap; gap: 24px;
-    }
-    .dg-item { text-align: center; color: rgba(255,255,255,.7); }
-    .dg-svg {
-      width: 56px; height: 56px; margin: 0 auto 10px;
-      background: rgba(255,255,255,.08); border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .dg-svg svg { width: 32px; height: 32px; fill: none; stroke: #7bbde8; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .dg-label { font-size: .76rem; font-weight: 500; }
-
-    /* ABOUT */
+    /* ── ABOUT ── */
     #about {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-      padding: 80px 6%; background: var(--off);
+      display: grid; grid-template-columns: 0.85fr 1.15fr;
+      gap: 56px; align-items: center;
+      padding: 80px 5%; background: var(--off);
     }
-
-    /* Dental illustration box */
-    .about-illus {
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .illus-main {
-      background: linear-gradient(135deg, var(--bluebg) 0%, #d6eaf8 100%);
-      border-radius: 22px; padding: 40px 30px;
-      display: flex; flex-direction: column; align-items: center;
+    /* Dental illustration card */
+    .about-card {
+      background: linear-gradient(135deg, var(--bluebg), #daeeff);
+      border-radius: 22px; padding: 36px 28px;
       border: 1px solid var(--border);
-      box-shadow: 0 14px 45px rgba(26,110,181,0.1);
+      box-shadow: 0 12px 40px rgba(26,110,181,0.09);
+      display: flex; flex-direction: column; align-items: center; text-align: center;
     }
-    .illus-main svg { width: 120px; height: 120px; }
-    .illus-name {
-      margin-top: 20px; text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 600; color: var(--dark);
-    }
-    .illus-reg {
-      font-size: .75rem; color: var(--muted); margin-top: 4px;
-      background: var(--white); padding: 4px 14px; border-radius: 20px;
-      border: 1px solid var(--border); font-weight: 500;
-    }
-    .illus-badges { display: flex; gap: 10px; margin-top: 14px; }
-    .ibadge {
-      flex: 1; background: var(--white); border: 1px solid var(--border);
-      border-radius: 10px; padding: 10px; text-align: center;
-      font-size: .72rem; color: var(--dark); font-weight: 500;
-    }
-    .ibadge span { display: block; font-size: 1.3rem; margin-bottom: 4px; }
+    .about-card svg { width: 100px; height: 100px; }
+    .about-card-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--dark); margin-top: 16px; }
+    .about-card-reg  { font-size: .7rem; color: var(--muted); background: var(--white); border: 1px solid var(--border); padding: 3px 12px; border-radius: 20px; margin-top: 6px; display: inline-block; }
+    .about-badges { display: flex; gap: 8px; margin-top: 14px; }
+    .abadge { flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: 9px; padding: 9px 6px; text-align: center; font-size: .7rem; font-weight: 500; color: var(--dark); }
+    .abadge span { display: block; font-size: 1.2rem; margin-bottom: 3px; }
 
-    .chip { display: inline-block; background: var(--bluebg); border: 1px solid var(--border); color: var(--blue); font-size: .67rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
-    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 2.6vw, 2.5rem); font-weight: 600; line-height: 1.2; color: var(--dark); }
+    .chip { display: inline-block; background: var(--bluebg); border: 1px solid var(--border); color: var(--blue); font-size: .65rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 11px; border-radius: 20px; margin-bottom: 12px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.5vw, 2.4rem); font-weight: 600; line-height: 1.2; color: var(--dark); }
     h2 em { font-style: italic; color: var(--blue); font-weight: 400; }
-    .sub { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-top: 12px; }
-
-    .clist { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
-    .crow {
-      display: flex; align-items: center; gap: 12px;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 11px; padding: 13px 15px;
-    }
-    .crow-ico { font-size: 1.2rem; flex-shrink: 0; }
-    .crow-t { font-weight: 600; font-size: .83rem; color: var(--dark); }
-    .crow-d { font-size: .74rem; color: var(--muted); margin-top: 1px; }
-
-    .row-cta { display: flex; align-items: center; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
-    .ph-btn {
-      display: flex; align-items: center; gap: 7px;
-      background: var(--bluebg); border: 1px solid var(--border);
-      color: var(--blue); padding: 10px 16px; border-radius: 22px;
-      font-size: .83rem; font-weight: 600; text-decoration: none; transition: all .2s;
-    }
+    .sub { font-size: .88rem; color: var(--muted); line-height: 1.78; margin-top: 10px; }
+    .clist { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
+    .crow { display: flex; align-items: center; gap: 11px; background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+    .ci { font-size: 1.1rem; flex-shrink: 0; }
+    .ct { font-weight: 600; font-size: .82rem; color: var(--dark); }
+    .cd { font-size: .72rem; color: var(--muted); margin-top: 1px; }
+    .row-cta { display: flex; align-items: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .ph-btn { display: flex; align-items: center; gap: 7px; background: var(--bluebg); border: 1px solid var(--border); color: var(--blue); padding: 9px 15px; border-radius: 22px; font-size: .82rem; font-weight: 600; text-decoration: none; transition: all .2s; }
     .ph-btn:hover { background: var(--blue); color: #fff; }
 
-    /* SERVICES */
-    #services { padding: 80px 6%; background: var(--white); }
-    .sec-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; }
-    .sgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .sc {
-      background: var(--off); border: 1.5px solid var(--border);
-      border-radius: 16px; padding: 26px 22px;
-      transition: all .25s; position: relative; overflow: hidden;
-    }
-    .sc:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(26,110,181,0.1); border-color: var(--blue2); background: var(--white); }
-    .sc-ico { font-size: 1.9rem; margin-bottom: 12px; }
-    .sc-t { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
-    .sc-d { font-size: .79rem; color: var(--muted); line-height: 1.6; }
-    .sc-ul { margin-top: 10px; list-style: none; display: flex; flex-direction: column; gap: 5px; }
-    .sc-ul li { font-size: .77rem; color: var(--text); padding-left: 14px; position: relative; }
-    .sc-ul li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; font-size: .7rem; }
+    /* ── SERVICES ── */
+    #services { padding: 80px 5%; background: var(--white); }
+    .sec-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+    .sgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .sc { background: var(--off); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px 20px; transition: all .25s; }
+    .sc:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(26,110,181,0.1); border-color: var(--blue2); background: var(--white); }
+    .sc-ico { font-size: 1.7rem; margin-bottom: 10px; }
+    .sc-t { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--dark); margin-bottom: 7px; }
+    .sc-ul { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+    .sc-ul li { font-size: .76rem; color: var(--text); padding-left: 13px; position: relative; }
+    .sc-ul li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; font-size: .68rem; }
 
-    /* TESTIMONIALS */
-    #testimonials { padding: 80px 6%; background: var(--off); text-align: center; }
-    .tgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 40px; text-align: left; }
-    .tc {
-      background: var(--white); border: 1.5px solid var(--border);
-      border-radius: 16px; padding: 24px;
-      transition: all .25s;
-    }
-    .tc:hover { box-shadow: 0 10px 32px rgba(26,110,181,0.09); transform: translateY(-3px); }
-    .stars { color: #f5a623; font-size: .82rem; letter-spacing: 2px; margin-bottom: 10px; }
-    .tt { font-size: .84rem; color: var(--text); line-height: 1.75; font-style: italic; }
-    .ta { display: flex; align-items: center; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
-    .tav {
-      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--blue), var(--blue2));
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-weight: 700; font-size: .78rem;
-    }
-    .tn { font-weight: 600; font-size: .82rem; color: var(--dark); }
-    .tr { font-size: .68rem; color: var(--muted); }
+    /* ── TESTIMONIALS ── */
+    #testimonials { padding: 80px 5%; background: var(--off); text-align: center; }
+    .tgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 36px; text-align: left; }
+    .tc { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 22px; transition: all .22s; }
+    .tc:hover { box-shadow: 0 10px 28px rgba(26,110,181,0.09); transform: translateY(-3px); }
+    .stars { color: #f5a623; font-size: .8rem; letter-spacing: 2px; margin-bottom: 10px; }
+    .tt { font-size: .83rem; color: var(--text); line-height: 1.75; font-style: italic; }
+    .ta { display: flex; align-items: center; gap: 9px; margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--border); }
+    .tav { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--blue), var(--blue2)); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: .75rem; }
+    .tn { font-weight: 600; font-size: .8rem; color: var(--dark); }
+    .tr { font-size: .67rem; color: var(--muted); }
 
-    /* APPOINTMENT */
+    /* ── APPOINTMENT ── */
     #appointment {
-      padding: 80px 6%; background: var(--white);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;
+      padding: 80px 5%; background: var(--white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
     }
-    .appt-info .sub { max-width: 380px; }
-    .icards { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
-    .icard {
-      display: flex; align-items: center; gap: 12px;
-      background: var(--off); border: 1px solid var(--border);
-      border-radius: 11px; padding: 13px 15px;
-    }
-    .ic-box {
-      width: 38px; height: 38px; border-radius: 9px;
-      background: var(--bluebg); display: flex; align-items: center;
-      justify-content: center; font-size: 1rem; flex-shrink: 0;
-    }
-    .ic-l { font-size: .66rem; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; }
-    .ic-v { font-weight: 600; font-size: .86rem; color: var(--dark); margin-top: 1px; }
-
-    .aform {
-      background: var(--dark); border-radius: 20px; padding: 30px;
-      box-shadow: 0 16px 50px rgba(11,44,69,0.16);
-    }
-    .aform h3 {
-      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600;
-      color: #fff; margin-bottom: 20px;
-    }
+    .icards { display: flex; flex-direction: column; gap: 9px; margin-top: 20px; }
+    .icard { display: flex; align-items: center; gap: 11px; background: var(--off); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+    .ic-box { width: 36px; height: 36px; border-radius: 8px; background: var(--bluebg); display: flex; align-items: center; justify-content: center; font-size: .95rem; flex-shrink: 0; }
+    .ic-l { font-size: .63rem; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; }
+    .ic-v { font-weight: 600; font-size: .84rem; color: var(--dark); margin-top: 1px; }
+    .aform { background: var(--dark); border-radius: 18px; padding: 28px; box-shadow: 0 14px 44px rgba(11,44,69,0.15); }
+    .aform h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 18px; }
     .frow2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .fg { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
-    .fg label { font-size: .65rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .7px; }
-    .fg input, .fg select, .fg textarea {
-      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12);
-      border-radius: 8px; padding: 10px 13px;
-      color: #fff; font-size: .84rem; font-family: inherit;
-      outline: none; transition: border .2s;
-    }
+    .fg label { font-size: .63rem; color: rgba(255,255,255,.48); text-transform: uppercase; letter-spacing: .7px; }
+    .fg input, .fg select, .fg textarea { background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12); border-radius: 8px; padding: 10px 12px; color: #fff; font-size: .83rem; font-family: inherit; outline: none; transition: border .2s; }
     .fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,.25); }
     .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: #7bbde8; }
     .fg select option { background: var(--dark); }
-    .fg textarea { resize: vertical; min-height: 70px; }
-    .fsub {
-      width: 100%; padding: 12px; border-radius: 9px;
-      background: var(--blue); color: #fff; border: none;
-      font-size: .9rem; font-weight: 600; cursor: pointer;
-      margin-top: 4px; transition: all .2s; font-family: inherit;
-    }
+    .fg textarea { resize: vertical; min-height: 65px; }
+    .fsub { width: 100%; padding: 11px; border-radius: 8px; background: var(--blue); color: #fff; border: none; font-size: .88rem; font-weight: 600; cursor: pointer; margin-top: 2px; transition: all .2s; font-family: inherit; }
     .fsub:hover { background: var(--blue2); transform: translateY(-1px); }
 
-    /* CONTACT */
-    #contact { padding: 70px 6%; background: var(--off); }
-    .cgrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 36px; }
-    .cc {
-      background: var(--white); border: 1.5px solid var(--border);
-      border-radius: 14px; padding: 22px 18px; text-align: center;
-      transition: all .2s;
+    /* ── FOOTER (replaces separate contact section) ── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,.5);
+      padding: 48px 5% 22px;
     }
-    .cc:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(26,110,181,0.08); }
-    .cc-ico { font-size: 1.6rem; margin-bottom: 10px; }
-    .cc-t { font-weight: 600; font-size: .83rem; color: var(--dark); margin-bottom: 6px; }
-    .cc-v { font-size: .79rem; color: var(--muted); line-height: 1.6; }
-    .cc-v a { color: var(--blue); text-decoration: none; }
-
-    /* FOOTER */
-    footer { background: var(--dark); color: rgba(255,255,255,.45); padding: 44px 6% 22px; }
     .ftop {
-      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px;
-      padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.07);
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 36px;
+      padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .fb p { font-size: .77rem; line-height: 1.7; margin-top: 12px; color: rgba(255,255,255,.38); }
-    .fb .logo-name { color: #fff; }
+    .fb p { font-size: .77rem; line-height: 1.7; margin-top: 10px; color: rgba(255,255,255,.38); }
+    .fb .logo-name { color: #fff; font-size: 1rem; }
     .fb .logo-sub  { color: #7bbde8; }
-    .fc h4 { color: #fff; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; }
+    .fc h4 { color: #fff; font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px; }
     .fc ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .fc ul a { color: rgba(255,255,255,.4); font-size: .77rem; text-decoration: none; transition: color .2s; }
-    .fc ul a:hover { color: #7bbde8; }
-    .fbot { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; font-size: .72rem; flex-wrap: wrap; gap: 8px; }
+    .fc a  { color: rgba(255,255,255,.42); font-size: .76rem; text-decoration: none; transition: color .2s; display: flex; align-items: center; gap: 6px; }
+    .fc a:hover { color: #7bbde8; }
+    .fbot { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; font-size: .7rem; flex-wrap: wrap; gap: 8px; }
     .socs { display: flex; gap: 8px; }
-    .soc {
-      width: 30px; height: 30px; border-radius: 50%;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .75rem; color: rgba(255,255,255,.42); text-decoration: none;
-      transition: all .2s;
-    }
+    .soc { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; font-size: .74rem; color: rgba(255,255,255,.42); text-decoration: none; transition: all .2s; }
     .soc:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
     /* WA FAB */
-    .wa {
-      position: fixed; bottom: 24px; right: 24px; z-index: 200;
-      width: 52px; height: 52px; border-radius: 50%;
-      background: #25d366; color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; text-decoration: none;
-      box-shadow: 0 5px 18px rgba(37,211,102,0.4);
-      animation: floaty 3s ease-in-out infinite;
-    }
+    .wa { position: fixed; bottom: 22px; right: 22px; z-index: 200; width: 50px; height: 50px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; text-decoration: none; box-shadow: 0 5px 16px rgba(37,211,102,0.4); animation: floaty 3s ease-in-out infinite; }
     .wa:hover { transform: scale(1.08); }
 
-    /* ANIMATIONS */
     @keyframes blink  { 0%,100%{opacity:1} 50%{opacity:.35} }
     @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
-    .reveal { opacity:0; transform:translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal { opacity:0; transform:translateY(18px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
 
     /* RESPONSIVE */
-    @media(max-width:900px) {
-      #hero,#about,#appointment { grid-template-columns:1fr; gap:32px; }
-      #hero { padding:90px 5% 50px; }
-      .sgrid,.tgrid { grid-template-columns:1fr 1fr; }
-      .cgrid { grid-template-columns:1fr 1fr; }
+    @media(max-width:860px) {
+      #hero { grid-template-columns:1fr; padding:100px 5% 50px; gap:30px; }
+      .hero-right { order:-1; height:280px; }
+      .hero-photo { width:60%; max-width:220px; }
+      #about { grid-template-columns:1fr; gap:30px; }
+      .about-card { max-width:360px; margin:0 auto; }
+      #appointment { grid-template-columns:1fr; gap:30px; }
+      .sgrid { grid-template-columns:1fr 1fr; }
+      .tgrid { grid-template-columns:1fr 1fr; }
       .ftop { grid-template-columns:1fr 1fr; }
-      nav .nav-phone { display:none; }
+      .nav-phone { display:none; }
     }
-    @media(max-width:580px) {
-      .sgrid,.tgrid,.cgrid { grid-template-columns:1fr; }
+    @media(max-width:560px) {
+      nav { padding:12px 4%; }
+      #hero,#about,#services,#testimonials,#appointment { padding:55px 4%; }
+      #hero { padding-top:90px; }
+      .sgrid,.tgrid { grid-template-columns:1fr; }
       .frow2 { grid-template-columns:1fr; }
       .ftop { grid-template-columns:1fr; }
-      #about,#services,#testimonials,#appointment,#contact { padding:55px 5%; }
+      .icon-strip { gap:16px; padding:14px 4%; }
     }
   </style>
 </head>
 <body>
 
-<a href="https://wa.me/918390256393" target="_blank" class="wa" title="WhatsApp">💬</a>
+<a href="https://wa.me/918390256393" target="_blank" class="wa">💬</a>
 
 <!-- NAV -->
 <nav>
@@ -403,21 +246,17 @@
 
 <!-- HERO -->
 <section id="hero">
-  <!-- subtle tooth pattern bg -->
-  <svg class="hero-deco" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
-    <g fill="var(--blue)">
-      <path d="M80 80 C80 60 100 50 120 60 C140 50 160 60 160 80 C160 100 150 130 140 150 C130 170 110 170 100 150 C90 130 80 100 80 80Z" opacity=".6"/>
-      <path d="M220 200 C220 180 240 170 260 180 C280 170 300 180 300 200 C300 220 290 250 280 270 C270 290 250 290 240 270 C230 250 220 220 220 200Z" opacity=".4"/>
-      <path d="M60 320 C60 300 80 290 100 300 C120 290 140 300 140 320 C140 340 130 370 120 390 C110 410 90 410 80 390 C70 370 60 340 60 320Z" opacity=".3"/>
-      <path d="M280 420 C280 400 300 390 320 400 C340 390 360 400 360 420 C360 440 350 470 340 490 C330 510 310 510 300 490 C290 470 280 440 280 420Z" opacity=".25"/>
-    </g>
+  <svg class="bg-deco" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M600 80C580 80 565 95 565 118c0 18 4 38 9 55l9 54c2 9 7 9 9 0l9-36h18l9 36c2 9 7 9 9 0l9-54c5-17 9-37 9-55 0-23-15-38-35-38z" fill="#1a6eb5"/>
+    <path d="M150 300C130 300 115 315 115 338c0 18 4 38 9 55l9 54c2 9 7 9 9 0l9-36h18l9 36c2 9 7 9 9 0l9-54c5-17 9-37 9-55 0-23-15-38-35-38z" fill="#1a6eb5"/>
+    <path d="M720 380C705 380 694 391 694 406c0 12 3 25 6 36l6 36c1 6 5 6 6 0l6-24h12l6 24c1 6 5 6 6 0l6-36c3-11 6-24 6-36 0-15-10-26-24-26z" fill="#1a6eb5"/>
   </svg>
 
   <div class="hero-left">
-    <div class="hero-tag"><div class="dot"></div> Brahmpuri · Christanand Hospital</div>
+    <div class="hero-tag"><div class="dot"></div>Brahmpuri · Christanand Hospital</div>
     <h1>Your Smile<br>Deserves <em>Expert</em><br>Care.</h1>
     <span class="doc-name">Dr. Pranali Shahare, BDS</span>
-    <span class="reg-tag">Reg. No. A 58437</span>
+    <span class="reg">Reg. No. A 58437</span>
     <p class="hero-desc">Compassionate, modern dental care for the whole family — where your comfort always comes first.</p>
     <div class="hero-btns">
       <a href="#appointment" class="btn-blue">Book Free Consultation</a>
@@ -429,101 +268,61 @@
       <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Services</div></div>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="hero-photo">
       <img src="pranali.png" alt="Dr. Pranali Shahare"/>
     </div>
-    <div class="dental-icons">
-      <div class="dico"><span>🦷</span> Pain-Free</div>
-      <div class="dico"><span>✨</span> Cosmetic</div>
-      <div class="dico"><span>😬</span> Braces</div>
-      <div class="dico"><span>🧼</span> Hygienic</div>
-    </div>
   </div>
 </section>
 
-<!-- DENTAL GRAPHIC STRIP -->
-<div id="dental-graphic">
-  <!-- Tooth SVG -->
-  <div class="dg-item">
-    <div class="dg-svg">
-      <svg viewBox="0 0 24 24"><path d="M12 2C9 2 7 4 7 7c0 2 .5 4 1 6l1 6c.2 1 .8 1 1 0l1-4h2l1 4c.2 1 .8 1 1 0l1-6c.5-2 1-4 1-6 0-3-2-5-5-5z"/></svg>
-    </div>
-    <div class="dg-label">General Dentistry</div>
-  </div>
-  <!-- Sparkle/Cosmetic SVG -->
-  <div class="dg-item">
-    <div class="dg-svg">
-      <svg viewBox="0 0 24 24"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z"/><path d="M19 14l.75 2.25L22 17l-2.25.75L19 20l-.75-2.25L16 17l2.25-.75L19 14z"/></svg>
-    </div>
-    <div class="dg-label">Cosmetic Dentistry</div>
-  </div>
-  <!-- Braces SVG -->
-  <div class="dg-item">
-    <div class="dg-svg">
-      <svg viewBox="0 0 24 24"><rect x="3" y="9" width="4" height="6" rx="1"/><rect x="10" y="8" width="4" height="8" rx="1"/><rect x="17" y="9" width="4" height="6" rx="1"/><line x1="7" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="17" y2="12"/></svg>
-    </div>
-    <div class="dg-label">Orthodontics</div>
-  </div>
-  <!-- Shield/Safe SVG -->
-  <div class="dg-item">
-    <div class="dg-svg">
-      <svg viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V6L12 2z"/><polyline points="9,12 11,14 15,10"/></svg>
-    </div>
-    <div class="dg-label">Safe & Hygienic</div>
-  </div>
-  <!-- Family SVG -->
-  <div class="dg-item">
-    <div class="dg-svg">
-      <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 21v-2a6 6 0 0112 0v2"/><path d="M17 21v-2a4 4 0 00-3-3.87"/></svg>
-    </div>
-    <div class="dg-label">Family Care</div>
-  </div>
+<!-- ICON STRIP -->
+<div class="icon-strip">
+  <div class="is-item"><span>🎓</span>BDS Qualified</div>
+  <div class="is-item"><span>💉</span>Pain-Free</div>
+  <div class="is-item"><span>🧼</span>Sterilized</div>
+  <div class="is-item"><span>👨‍👩‍👧</span>Family Care</div>
+  <div class="is-item"><span>✅</span>Free Consultation</div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-illus reveal">
-    <div class="illus-main">
-      <!-- Dental cross / medical SVG illustration -->
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Big tooth shape -->
-        <path d="M60 10 C48 10 40 20 40 32 C40 40 42 50 45 60 L48 80 C49 86 51 86 52 80 L54 70 H66 L68 80 C69 86 71 86 72 80 L75 60 C78 50 80 40 80 32 C80 20 72 10 60 10Z" fill="#1a6eb5" opacity=".15" stroke="#1a6eb5" stroke-width="1.5"/>
-        <!-- Shine on tooth -->
-        <path d="M50 18 C50 18 46 24 46 30" stroke="#2589d4" stroke-width="2" stroke-linecap="round" opacity=".5"/>
-        <!-- Small sparkles -->
-        <circle cx="90" cy="25" r="3" fill="#2589d4" opacity=".4"/>
-        <circle cx="95" cy="40" r="2" fill="#1a6eb5" opacity=".3"/>
-        <circle cx="28" cy="35" r="2.5" fill="#2589d4" opacity=".35"/>
-        <!-- Doctor icon circle -->
-        <circle cx="60" cy="60" r="28" fill="white" stroke="#d8eaf5" stroke-width="1.5"/>
-        <!-- Stethoscope simple icon -->
-        <path d="M52 52 C52 52 50 56 50 60 C50 65 54 68 60 68 C66 68 70 65 70 60 C70 56 68 52 68 52" stroke="#1a6eb5" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <circle cx="60" cy="72" r="3" fill="#1a6eb5"/>
-        <path d="M60 75 L60 82" stroke="#1a6eb5" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="60" cy="84" r="2" stroke="#1a6eb5" stroke-width="1.5" fill="none"/>
-        <!-- Cross symbol -->
-        <rect x="56" y="46" width="8" height="3" rx="1.5" fill="#1a6eb5" opacity=".6"/>
-        <rect x="58.5" y="43.5" width="3" height="8" rx="1.5" fill="#1a6eb5" opacity=".6"/>
-      </svg>
-      <div class="illus-name">Dr. Pranali Shahare</div>
-      <div class="illus-reg">Reg. No. A 58437</div>
-      <div class="illus-badges">
-        <div class="ibadge"><span>🎓</span>BDS</div>
-        <div class="ibadge"><span>🏅</span>DCI Reg.</div>
-        <div class="ibadge"><span>❤️</span>Gentle</div>
-      </div>
+  <div class="about-card reveal">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tooth shape -->
+      <path d="M50 8C40 8 33 16 33 27c0 8 2 18 5 26l4 22c1 5 4 5 5 0l3-12h10l3 12c1 5 4 5 5 0l4-22c3-8 5-18 5-26 0-11-7-19-17-19z" fill="#1a6eb5" opacity=".15" stroke="#1a6eb5" stroke-width="1.2"/>
+      <!-- Shine -->
+      <path d="M40 16c0 0-3 4-3 8" stroke="#2589d4" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+      <!-- Center doctor circle -->
+      <circle cx="50" cy="52" r="22" fill="white" stroke="#d8eaf5" stroke-width="1"/>
+      <!-- Stethoscope -->
+      <path d="M43 45c0 0-2 4-2 8 0 4 4 7 9 7s9-3 9-7c0-4-2-8-2-8" stroke="#1a6eb5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <circle cx="50" cy="62" r="2.5" fill="#1a6eb5"/>
+      <line x1="50" y1="64.5" x2="50" y2="69" stroke="#1a6eb5" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="50" cy="71" r="1.8" stroke="#1a6eb5" stroke-width="1.2" fill="none"/>
+      <!-- Plus -->
+      <rect x="47" y="40" width="6" height="2.5" rx="1.2" fill="#1a6eb5" opacity=".5"/>
+      <rect x="48.75" y="38.25" width="2.5" height="6" rx="1.2" fill="#1a6eb5" opacity=".5"/>
+      <!-- Sparkles -->
+      <circle cx="78" cy="22" r="2" fill="#2589d4" opacity=".35"/>
+      <circle cx="82" cy="34" r="1.4" fill="#1a6eb5" opacity=".28"/>
+      <circle cx="22" cy="30" r="1.6" fill="#2589d4" opacity=".3"/>
+    </svg>
+    <div class="about-card-name">Dr. Pranali Shahare</div>
+    <div class="about-card-reg">Reg. No. A 58437</div>
+    <div class="about-badges">
+      <div class="abadge"><span>🎓</span>BDS</div>
+      <div class="abadge"><span>🏅</span>DCI Reg.</div>
+      <div class="abadge"><span>❤️</span>Gentle</div>
     </div>
   </div>
   <div class="reveal">
     <div class="chip">About the Doctor</div>
     <h2>Meet <em>Dr. Pranali Shahare</em></h2>
-    <p class="sub">A BDS-qualified dental surgeon at Christanand Hospital, Brahmpuri — combining clinical skill with genuine care for every patient who walks through the door.</p>
+    <p class="sub">A BDS-qualified dental surgeon at Christanand Hospital, Brahmpuri — bringing skill, warmth, and modern techniques to every patient.</p>
     <div class="clist">
-      <div class="crow"><div class="crow-ico">🎓</div><div><div class="crow-t">BDS — Bachelor of Dental Surgery</div><div class="crow-d">Fully qualified dental surgeon · Reg. No. A 58437</div></div></div>
-      <div class="crow"><div class="crow-ico">🏅</div><div><div class="crow-t">DCI Registered</div><div class="crow-d">Dental Council of India registered practitioner</div></div></div>
-      <div class="crow"><div class="crow-ico">❤️</div><div><div class="crow-t">Patient-First Approach</div><div class="crow-d">Gentle, thorough care for adults, kids & anxious patients</div></div></div>
+      <div class="crow"><div class="ci">🎓</div><div><div class="ct">BDS — Bachelor of Dental Surgery</div><div class="cd">Fully qualified · Reg. No. A 58437</div></div></div>
+      <div class="crow"><div class="ci">🏅</div><div><div class="ct">DCI Registered Practitioner</div><div class="cd">Dental Council of India registered</div></div></div>
+      <div class="crow"><div class="ci">❤️</div><div><div class="ct">Gentle & Patient-First</div><div class="cd">Special care for anxious patients & children</div></div></div>
     </div>
     <div class="row-cta">
       <a href="#appointment" class="btn-blue">Schedule a Visit</a>
@@ -536,15 +335,15 @@
 <section id="services">
   <div class="sec-top reveal">
     <div><div class="chip">What We Offer</div><h2>Our <em>Services</em></h2></div>
-    <a href="#appointment" class="btn-blue" style="white-space:nowrap;flex-shrink:0">Book Now</a>
+    <a href="#appointment" class="btn-blue" style="white-space:nowrap;flex-shrink:0;font-size:.82rem;padding:10px 18px">Book Now</a>
   </div>
   <div class="sgrid">
-    <div class="sc reveal"><div class="sc-ico">🪥</div><div class="sc-t">General Dentistry</div><div class="sc-d">Complete care for the whole family.</div><ul class="sc-ul"><li>Cleaning & Check-up</li><li>Tooth Fillings</li><li>Root Canal</li><li>Extraction</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">✨</div><div class="sc-t">Cosmetic Dentistry</div><div class="sc-d">Beautiful, natural-looking smiles.</div><ul class="sc-ul"><li>Teeth Whitening</li><li>Veneers</li><li>Smile Makeover</li><li>Bonding</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">😬</div><div class="sc-t">Orthodontics</div><div class="sc-d">Straighter teeth, healthier bite.</div><ul class="sc-ul"><li>Metal Braces</li><li>Ceramic Braces</li><li>Clear Aligners</li><li>Retainers</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">🦷</div><div class="sc-t">Restorative Care</div><div class="sc-d">Rebuild damaged or missing teeth.</div><ul class="sc-ul"><li>Crowns & Bridges</li><li>Dentures</li><li>Implants</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">🍼</div><div class="sc-t">Pediatric Dentistry</div><div class="sc-d">Friendly, fun care for children.</div><ul class="sc-ul"><li>Kids Check-up</li><li>Fluoride Treatment</li><li>Milk Teeth Care</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">🫀</div><div class="sc-t">Gum Care</div><div class="sc-d">Healthy gums, healthy smile.</div><ul class="sc-ul"><li>Gum Treatment</li><li>Deep Cleaning</li><li>Gum Contouring</li></ul></div>
+    <div class="sc reveal"><div class="sc-ico">🪥</div><div class="sc-t">General Dentistry</div><ul class="sc-ul"><li>Cleaning & Check-up</li><li>Tooth Fillings</li><li>Root Canal</li><li>Extraction</li></ul></div>
+    <div class="sc reveal"><div class="sc-ico">✨</div><div class="sc-t">Cosmetic Dentistry</div><ul class="sc-ul"><li>Teeth Whitening</li><li>Veneers</li><li>Smile Makeover</li><li>Bonding</li></ul></div>
+    <div class="sc reveal"><div class="sc-ico">😬</div><div class="sc-t">Orthodontics</div><ul class="sc-ul"><li>Metal Braces</li><li>Ceramic Braces</li><li>Clear Aligners</li><li>Retainers</li></ul></div>
+    <div class="sc reveal"><div class="sc-ico">🦷</div><div class="sc-t">Restorative Care</div><ul class="sc-ul"><li>Crowns & Bridges</li><li>Dentures</li><li>Implants</li></ul></div>
+    <div class="sc reveal"><div class="sc-ico">🍼</div><div class="sc-t">Pediatric Dentistry</div><ul class="sc-ul"><li>Kids Check-up</li><li>Fluoride Treatment</li><li>Milk Teeth Care</li></ul></div>
+    <div class="sc reveal"><div class="sc-ico">🫀</div><div class="sc-t">Gum Care</div><ul class="sc-ul"><li>Gum Treatment</li><li>Deep Cleaning</li><li>Gum Contouring</li></ul></div>
   </div>
 </section>
 
@@ -553,22 +352,21 @@
   <div class="reveal"><div class="chip">Patient Reviews</div><h2>What Patients Say About <em>Dr. Pranali</em></h2></div>
   <div class="tgrid">
     <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"Dr. Pranali is so gentle and caring. Severe toothache was gone the same day — best dentist in Brahmpuri!"</div><div class="ta"><div class="tav">RP</div><div><div class="tn">Riya Pawar</div><div class="tr">Root Canal Patient</div></div></div></div>
-    <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"Teeth whitening results were amazing! She explained everything clearly and I felt so comfortable throughout."</div><div class="ta"><div class="tav">SM</div><div><div class="tn">Sneha More</div><div class="tr">Whitening Patient</div></div></div></div>
+    <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"Teeth whitening results were amazing! She explained everything clearly and made me feel so comfortable."</div><div class="ta"><div class="tav">SM</div><div><div class="tn">Sneha More</div><div class="tr">Whitening Patient</div></div></div></div>
     <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"My son was scared of dentists but Dr. Pranali handled him so kindly. We visit regularly now without any trouble!"</div><div class="ta"><div class="tav">AK</div><div><div class="tn">Ajay Kale</div><div class="tr">Pediatric Care Parent</div></div></div></div>
   </div>
 </section>
 
 <!-- APPOINTMENT -->
 <section id="appointment">
-  <div class="appt-info reveal">
+  <div class="reveal">
     <div class="chip">Book Appointment</div>
     <h2>Visit <em>Christanand Hospital</em></h2>
-    <p class="sub">First consultation is free. We'll confirm your slot quickly.</p>
+    <p class="sub">First consultation is free. We'll confirm your slot shortly.</p>
     <div class="icards">
-      <div class="icard"><div class="ic-box">📍</div><div><div class="ic-l">Location</div><div class="ic-v">Christanand Hospital, Brahmpuri, Maharashtra</div></div></div>
+      <div class="icard"><div class="ic-box">📍</div><div><div class="ic-l">Address</div><div class="ic-v">Christanand Hospital, Brahmpuri, Maharashtra</div></div></div>
       <div class="icard"><div class="ic-box">📞</div><div><div class="ic-l">Phone & WhatsApp</div><div class="ic-v"><a href="tel:+918390256393" style="color:var(--blue);text-decoration:none">+91 83902 56393</a></div></div></div>
-      <div class="icard"><div class="ic-box">🕐</div><div><div class="ic-l">Hours</div><div class="ic-v">Mon–Sat: 9 AM – 8 PM &nbsp;|&nbsp; Sun: By Appt.</div></div></div>
-      <div class="icard"><div class="ic-box">✅</div><div><div class="ic-l">First Visit</div><div class="ic-v">Free consultation for new patients</div></div></div>
+      <div class="icard"><div class="ic-box">🕐</div><div><div class="ic-l">Hours</div><div class="ic-v">Mon–Sat: 9 AM – 8 PM &nbsp;·&nbsp; Sun: By Appt.</div></div></div>
     </div>
   </div>
   <div class="aform reveal">
@@ -597,33 +395,38 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="reveal"><div class="chip">Find Us</div><h2>Come Visit Us in <em>Brahmpuri</em></h2></div>
-  <div class="cgrid">
-    <div class="cc reveal"><div class="cc-ico">📍</div><div class="cc-t">Address</div><div class="cc-v">Christanand Hospital<br>Brahmpuri, Maharashtra</div></div>
-    <div class="cc reveal"><div class="cc-ico">📞</div><div class="cc-t">Phone / WhatsApp</div><div class="cc-v"><a href="tel:+918390256393">+91 83902 56393</a></div></div>
-    <div class="cc reveal"><div class="cc-ico">🕐</div><div class="cc-t">Clinic Hours</div><div class="cc-v">Mon–Sat: 9 AM – 8 PM<br>Sunday: By Appointment</div></div>
-    <div class="cc reveal"><div class="cc-ico">👩‍⚕️</div><div class="cc-t">Doctor</div><div class="cc-v">Dr. Pranali Shahare, BDS<br>Reg. No. A 58437</div></div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- FOOTER — contact info lives here only, not repeated above -->
 <footer>
   <div class="ftop">
     <div class="fb">
       <div class="logo" style="text-decoration:none">
         <div class="logo-box">🦷</div>
-        <div><span class="logo-name">Christanand Hospital</span><span class="logo-sub">Dr. Pranali Shahare · BDS</span></div>
+        <div><span class="logo-name">Christanand Hospital</span><span class="logo-sub">Dr. Pranali Shahare · BDS · Reg. A 58437</span></div>
       </div>
       <p>Gentle, modern dental care for the families of Brahmpuri. Your smile is in safe hands.</p>
     </div>
-    <div class="fc"><h4>Services</h4><ul><li><a href="#services">General Dentistry</a></li><li><a href="#services">Cosmetic Dentistry</a></li><li><a href="#services">Orthodontics</a></li><li><a href="#services">Pediatric Care</a></li></ul></div>
-    <div class="fc"><h4>Quick Links</h4><ul><li><a href="#about">About Doctor</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#appointment">Book Appointment</a></li><li><a href="#contact">Contact</a></li></ul></div>
-    <div class="fc"><h4>Contact</h4><ul><li><a href="tel:+918390256393">📞 +91 83902 56393</a></li><li><a href="https://wa.me/918390256393">💬 WhatsApp Us</a></li><li><a href="#">📍 Brahmpuri, Maharashtra</a></li></ul></div>
+    <div class="fc">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">General Dentistry</a></li>
+        <li><a href="#services">Cosmetic Dentistry</a></li>
+        <li><a href="#services">Orthodontics</a></li>
+        <li><a href="#services">Pediatric Care</a></li>
+        <li><a href="#services">Restorative & Gum</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+918390256393">📞 +91 83902 56393</a></li>
+        <li><a href="https://wa.me/918390256393">💬 WhatsApp Us</a></li>
+        <li><a href="#">📍 Brahmpuri, Maharashtra</a></li>
+        <li><a href="#appointment">🗓 Book Appointment</a></li>
+      </ul>
+    </div>
   </div>
   <div class="fbot">
-    <span>© 2025 Christanand Hospital · Dr. Pranali Shahare BDS · Reg. A 58437 · Brahmpuri</span>
+    <span>© 2025 Christanand Hospital · Dr. Pranali Shahare BDS · Reg. A 58437</span>
     <div class="socs">
       <a href="#" class="soc">📷</a>
       <a href="#" class="soc">📘</a>
@@ -638,25 +441,21 @@
   }, {threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.boxShadow = window.scrollY > 40 ? '0 4px 20px rgba(26,110,181,0.1)' : '0 2px 20px rgba(26,110,181,0.06)';
-  });
-
   function sendWA() {
-    const n = document.getElementById('f-name').value.trim();
-    const p = document.getElementById('f-phone').value.trim();
-    const s = document.getElementById('f-service').value;
-    const t = document.getElementById('f-timing').value.trim();
-    const m = document.getElementById('f-message').value.trim();
-    if(!n){ alert('Please enter your name.'); return; }
-    if(!p){ alert('Please enter your phone number.'); return; }
-    let txt = `Hello Dr. Pranali 👋\n\nI'd like to book an appointment.\n\n👤 *Name:* ${n}\n📞 *Phone:* ${p}\n`;
-    if(s) txt += `🦷 *Treatment:* ${s}\n`;
-    if(t) txt += `🕐 *Timing:* ${t}\n`;
-    if(m) txt += `💬 *Note:* ${m}\n`;
-    txt += `\nKindly confirm. Thank you!`;
-    window.open(`https://wa.me/918390256393?text=${encodeURIComponent(txt)}`, '_blank');
+    const n=document.getElementById('f-name').value.trim();
+    const p=document.getElementById('f-phone').value.trim();
+    const s=document.getElementById('f-service').value;
+    const t=document.getElementById('f-timing').value.trim();
+    const m=document.getElementById('f-message').value.trim();
+    if(!n){alert('Please enter your name.');return;}
+    if(!p){alert('Please enter your phone number.');return;}
+    let txt=`Hello Dr. Pranali 👋\n\nI'd like to book an appointment.\n\n👤 *Name:* ${n}\n📞 *Phone:* ${p}\n`;
+    if(s) txt+=`🦷 *Treatment:* ${s}\n`;
+    if(t) txt+=`🕐 *Timing:* ${t}\n`;
+    if(m) txt+=`💬 *Note:* ${m}\n`;
+    txt+=`\nKindly confirm. Thank you!`;
+    window.open(`https://wa.me/918390256393?text=${encodeURIComponent(txt)}`,'_blank');
   }
 </script>
 </body>
-</html>
+                                                                                                                                                                                                                                         </html>

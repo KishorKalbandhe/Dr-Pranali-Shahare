@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Pranali Shahare | Christanand Hospital – Brahmpuri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1a6bb5;
+      --blue2:      #2583d8;
+      --blue3:      #d6eaf8;
+      --blue-dark:  #0d3f6e;
+      --blue-light: #eaf4fd;
+      --white:      #ffffff;
+      --off-white:  #f7fbff;
+      --text:       #1c2b3a;
+      --muted:      #5e7a92;
+      --border:     #d0e6f5;
+      --accent:     #e8f4fd;
+      --radius:     16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 6%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(26,107,181,0.1); }
+
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--blue-dark); line-height: 1.2; }
+    .logo-sub  { font-size: 0.62rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; display: block; }
+
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: .86rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue); color: #fff;
+      border: none; padding: 10px 22px; border-radius: 30px;
+      font-size: .86rem; font-weight: 600; cursor: pointer;
+      transition: background .2s, transform .15s; text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--blue2); transform: translateY(-1px); }
+
+    .nav-phone {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--blue); font-size: .84rem; font-weight: 600;
+      text-decoration: none; margin-right: 4px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      padding-top: 80px;
+      background: linear-gradient(135deg, var(--off-white) 0%, var(--blue-light) 60%, #d6eaf8 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute; top: -10%; right: -5%;
+      width: 55vw; height: 55vw; max-width: 700px;
+      background: radial-gradient(circle, rgba(37,131,216,0.12) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-blob2 {
+      position: absolute; bottom: -10%; left: -5%;
+      width: 35vw; height: 35vw; max-width: 400px;
+      background: radial-gradient(circle, rgba(26,107,181,0.07) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+
+    .hero-left { padding: 5% 4% 5% 8%; position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(26,107,181,0.1); border: 1px solid rgba(26,107,181,0.25);
+      color: var(--blue); border-radius: 30px;
+      padding: 6px 16px; font-size: .75rem; font-weight: 600; letter-spacing: .8px;
+      text-transform: uppercase; margin-bottom: 24px;
+      animation: fadeUp .6s ease both;
+    }
+    .badge-dot { width: 7px; height: 7px; background: var(--blue2); border-radius: 50%; animation: pulse 2s infinite; }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 700; line-height: 1.15;
+      color: var(--blue-dark);
+      animation: fadeUp .7s .1s ease both;
+    }
+    .hero-title em { font-style: italic; color: var(--blue); }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600; color: var(--blue);
+      margin-top: 6px; display: block;
+      animation: fadeUp .7s .15s ease both;
+    }
+
+    .hero-desc {
+      margin-top: 20px; max-width: 460px;
+      font-size: .95rem; line-height: 1.8; color: var(--muted);
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+      animation: fadeUp .7s .25s ease both;
+    }
+    .pill {
+      background: var(--white); border: 1px solid var(--border);
+      color: var(--blue-dark); padding: 7px 16px; border-radius: 30px;
+      font-size: .78rem; font-weight: 500;
+    }
+
+    .hero-stats {
+      display: flex; gap: 0; margin-top: 32px;
+      background: var(--white); border-radius: 16px;
+      border: 1px solid var(--border); overflow: hidden;
+      max-width: 420px; box-shadow: 0 8px 30px rgba(26,107,181,0.08);
+      animation: fadeUp .7s .3s ease both;
+    }
+    .stat-item {
+      flex: 1; padding: 18px 16px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--blue); line-height: 1;
+    }
+    .stat-label { font-size: .68rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+    .hero-btns {
+      display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap;
+      animation: fadeUp .7s .35s ease both;
+    }
+    .btn-primary {
+      background: var(--blue); color: #fff;
+      padding: 14px 30px; border-radius: 40px;
+      font-size: .92rem; font-weight: 600;
+      text-decoration: none; transition: all .25s;
+      box-shadow: 0 8px 24px rgba(26,107,181,0.28);
+    }
+    .btn-primary:hover { background: var(--blue2); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(26,107,181,0.34); }
+    .btn-outline {
+      border: 2px solid var(--blue); color: var(--blue);
+      padding: 13px 30px; border-radius: 40px;
+      font-size: .92rem; font-weight: 600;
+      text-decoration: none; transition: all .25s; background: transparent;
+    }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+
+    .hero-right {
+      position: relative; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      animation: fadeIn .9s .2s ease both; z-index: 1;
+    }
+    .hero-img-wrap {
+      width: 80%; max-width: 400px; aspect-ratio: 3/4;
+      border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+      overflow: hidden; position: relative;
+      box-shadow: 0 30px 80px rgba(26,107,181,0.2);
+      border: 6px solid var(--white);
+    }
+    .hero-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #d6eaf8, #a8d4f5, #7bbde8);
+      color: var(--blue-dark); gap: 14px;
+    }
+    .hero-img-placeholder .ph-icon { font-size: 5rem; opacity: .6; }
+    .hero-img-placeholder p { font-size: .78rem; color: var(--blue-dark); opacity: .65; text-align: center; padding: 0 24px; line-height: 1.5; }
+
+    .hero-card1 {
+      position: absolute; top: 16%; left: -2%;
+      background: var(--white); border-radius: 14px; padding: 14px 18px;
+      box-shadow: 0 10px 40px rgba(26,107,181,0.12);
+      display: flex; align-items: center; gap: 10px;
+      animation: float 3.5s ease-in-out infinite;
+    }
+    .card1-icon { font-size: 1.8rem; }
+    .card1-label { font-size: .72rem; font-weight: 700; color: var(--blue-dark); }
+    .card1-sub   { font-size: .65rem; color: var(--muted); margin-top: 1px; }
+
+    .hero-card2 {
+      position: absolute; bottom: 20%; right: -2%;
+      background: var(--blue); color: #fff;
+      border-radius: 14px; padding: 14px 20px;
+      box-shadow: 0 10px 30px rgba(26,107,181,0.35);
+      text-align: center;
+      animation: float 4s 1s ease-in-out infinite;
+    }
+    .card2-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+    .card2-sub { font-size: .7rem; opacity: .85; margin-top: 2px; }
+
+    /* ── TRUST BAR ── */
+    #trust {
+      background: var(--blue-dark);
+      padding: 22px 8%;
+      display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.8); font-size: .84rem; font-weight: 500;
+    }
+    .trust-item span { font-size: 1.2rem; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 90px 8%; }
+    .section-label {
+      display: inline-block;
+      font-size: .7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--blue); font-weight: 600; margin-bottom: 12px;
+      background: var(--blue-light); padding: 4px 14px; border-radius: 20px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      font-weight: 700; line-height: 1.2; color: var(--blue-dark);
+    }
+    .section-title em { font-style: italic; color: var(--blue); font-weight: 400; }
+    .section-sub { color: var(--muted); font-size: .92rem; line-height: 1.75; margin-top: 12px; max-width: 520px; }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--off-white);
+      display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 72px; align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img-box {
+      width: 100%; aspect-ratio: 4/5;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(26,107,181,0.15);
+      border: 4px solid var(--white);
+    }
+    .about-img-box img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(145deg, #d6eaf8 0%, #a8d4f5 100%);
+      color: var(--blue-dark); gap: 10px;
+    }
+    .about-img-placeholder .ph-icon { font-size: 3.5rem; opacity: .5; }
+    .about-img-placeholder p { font-size: .75rem; text-align: center; padding: 0 20px; color: var(--muted); }
+
+    .about-badge {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--blue); color: #fff;
+      border-radius: 18px; padding: 18px 22px; text-align: center;
+      box-shadow: 0 10px 30px rgba(26,107,181,0.35);
+    }
+    .about-badge strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+    .about-badge span { font-size: .7rem; opacity: .85; }
+
+    .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+    .cred-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .cred-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .cred-title { font-weight: 600; font-size: .84rem; color: var(--blue-dark); }
+    .cred-desc  { font-size: .75rem; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+    .about-cta-row { margin-top: 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .phone-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--blue-light); border: 1px solid var(--border);
+      color: var(--blue); border-radius: 30px; padding: 10px 18px;
+      font-size: .86rem; font-weight: 600; text-decoration: none;
+      transition: all .2s;
+    }
+    .phone-chip:hover { background: var(--blue); color: #fff; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+    }
+    .service-card {
+      background: var(--off-white); border-radius: var(--radius);
+      padding: 30px 26px;
+      border: 1.5px solid var(--border);
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(26,107,181,0.12);
+      border-color: var(--blue2);
+      background: var(--white);
+    }
+    .svc-num {
+      position: absolute; top: 16px; right: 20px;
+      font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700;
+      color: rgba(26,107,181,0.06); line-height: 1;
+    }
+    .svc-icon {
+      width: 54px; height: 54px; border-radius: 14px;
+      background: var(--blue-light); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 18px;
+      border: 1px solid var(--border);
+    }
+    .svc-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
+    .svc-desc  { font-size: .83rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+    .svc-list  { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .svc-list li {
+      font-size: .81rem; color: var(--text);
+      padding-left: 18px; position: relative;
+    }
+    .svc-list li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; font-size: .75rem; }
+
+    /* ── WHY CHOOSE ── */
+    #why {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, #0f4d8a 100%);
+      border-radius: 32px; margin: 0 4%;
+    }
+    #why .section-label { background: rgba(255,255,255,.1); color: #a8d4f5; }
+    #why .section-title { color: #fff; }
+    #why .section-title em { color: #7bbde8; }
+    #why .section-sub { color: rgba(255,255,255,.6); }
+
+    .why-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .why-grid-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .why-card {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px; padding: 20px 18px;
+      transition: background .25s;
+    }
+    .why-card:hover { background: rgba(255,255,255,.12); }
+    .why-card-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .why-card-title { font-weight: 600; font-size: .88rem; color: #fff; margin-bottom: 6px; }
+    .why-card-desc  { font-size: .78rem; color: rgba(255,255,255,.55); line-height: 1.5; }
+
+    .why-right { position: relative; }
+    .why-img-stack { position: relative; }
+    .why-main-img {
+      width: 90%; aspect-ratio: 4/5; border-radius: 24px; overflow: hidden;
+      background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.15);
+    }
+    .why-main-img img { width: 100%; height: 100%; object-fit: cover; }
+    .why-img-ph {
+      width: 100%; height: 100%; min-height: 300px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; opacity: .3; color: #fff;
+    }
+    .why-float-card {
+      position: absolute; bottom: -20px; right: 0;
+      background: var(--white); border-radius: 16px; padding: 16px 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.2);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .wfc-icon { font-size: 2rem; }
+    .wfc-num  { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--blue); line-height: 1; }
+    .wfc-label { font-size: .7rem; color: var(--muted); }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--off-white); text-align: center; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 22px; margin-top: 50px; text-align: left;
+    }
+    .testi-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 28px; border: 1.5px solid var(--border);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .testi-card:hover { box-shadow: 0 14px 40px rgba(26,107,181,0.1); transform: translateY(-4px); }
+    .stars { color: #f5a623; font-size: .9rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-text { font-size: .88rem; color: var(--text); line-height: 1.75; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: .88rem; flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: .87rem; color: var(--blue-dark); }
+    .testi-role { font-size: .73rem; color: var(--muted); margin-top: 1px; }
+
+    /* ── APPOINTMENT ── */
+    #appointment {
+      background: var(--white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+    }
+    .appt-left { padding-top: 10px; }
+    .appt-info-cards { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+    .appt-info-card {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--off-white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 18px;
+    }
+    .aic-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--blue-light); display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .aic-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; }
+    .aic-value { font-weight: 600; font-size: .9rem; color: var(--blue-dark); margin-top: 2px; }
+
+    .appt-form {
+      background: var(--blue-dark); border-radius: 24px;
+      padding: 36px; box-shadow: 0 20px 60px rgba(13,63,110,0.2);
+    }
+    .appt-form h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+      color: #fff; margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-size: .72rem; color: rgba(255,255,255,.6); letter-spacing: .8px; text-transform: uppercase; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.15);
+      border-radius: 10px; padding: 12px 15px;
+      color: #fff; font-size: .88rem; font-family: inherit;
+      outline: none; transition: border .2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,.3); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: #7bbde8; }
+    .form-group select option { background: var(--blue-dark); color: #fff; }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%; padding: 14px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #fff; border: none; font-size: .95rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; margin-top: 4px;
+      letter-spacing: .3px;
+    }
+    .form-submit:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(37,131,216,0.4); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--off-white); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 48px; }
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; }
+    .contact-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 22px 22px; border: 1.5px solid var(--border);
+      display: flex; align-items: center; gap: 18px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .contact-card:hover { box-shadow: 0 8px 30px rgba(26,107,181,0.1); transform: translateX(4px); }
+    .cc-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--blue-light); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0; border: 1px solid var(--border);
+    }
+    .cc-label { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 4px; }
+    .cc-value { font-weight: 600; font-size: .92rem; color: var(--blue-dark); line-height: 1.5; }
+    .cc-value a { color: var(--blue); text-decoration: none; }
+
+    .map-placeholder {
+      width: 100%; height: 320px; border-radius: 20px;
+      background: linear-gradient(145deg, var(--blue-light), var(--blue3));
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      border: 1.5px solid var(--border); gap: 12px;
+      color: var(--blue); font-size: .9rem; font-weight: 500;
+    }
+    .map-placeholder .map-icon { font-size: 3rem; opacity: .5; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blue-dark); color: rgba(255,255,255,.55);
+      padding: 56px 8% 28px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
+      padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand .logo-text { color: #fff; }
+    .footer-brand .logo-sub  { color: #7bbde8; }
+    .footer-brand p { font-size: .81rem; line-height: 1.7; margin-top: 14px; color: rgba(255,255,255,.45); }
+    .footer-col h4 { color: #fff; font-size: .84rem; font-weight: 700; letter-spacing: .8px; margin-bottom: 16px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,.45); text-decoration: none; font-size: .81rem; transition: color .2s; }
+    .footer-col ul a:hover { color: #7bbde8; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 22px; font-size: .76rem; flex-wrap: wrap; gap: 14px;
+    }
+    .social-links { display: flex; gap: 10px; }
+    .social-link {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .82rem; text-decoration: none; color: rgba(255,255,255,.5);
+      transition: all .2s;
+    }
+    .social-link:hover { background: var(--blue2); color: #fff; border-color: var(--blue2); }
+
+    /* ── WHATSAPP BTN ── */
+    .whatsapp-fab {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25d366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      transition: transform .2s, box-shadow .2s;
+      animation: float 3s ease-in-out infinite;
+    }
+    .whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(26px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-9px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.8); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; padding: 100px 6% 60px; }
+      .hero-right { height: 360px; }
+      #about, .why-layout, #appointment, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      nav .nav-links, nav .nav-phone { display: none; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 60px 5%; }
+      .services-grid, .testi-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .why-grid-cards { grid-template-columns: 1fr; }
+      #trust { gap: 20px; }
+      .cred-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/918390256393" target="_blank" class="whatsapp-fab" title="Chat on WhatsApp">💬</a>
+
+<!-- ────────── NAVBAR ────────── -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">
+    <div class="logo-icon">🦷</div>
+    <div>
+      <span class="logo-text">Christanand Hospital</span>
+      <span class="logo-sub">Dr. Pranali Shahare · BDS</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+918390256393" class="nav-phone">📞 +91 83902 56393</a>
+  <a href="#appointment" class="nav-cta">Book Appointment</a>
+</nav>
+
+<!-- ────────── HERO ────────── -->
+<section id="hero">
+  <div class="hero-blob"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Now Accepting New Patients · Brahmpuri
+    </div>
+    <h1 class="hero-title">Your Smile<br>Deserves <em>Expert</em><br>Care.</h1>
+    <span class="hero-name">Dr. Pranali Shahare, BDS</span>
+    <p class="hero-desc">
+      Compassionate, modern dental care at Christanand Hospital, Brahmpuri. From routine check-ups to complete smile transformations — your comfort is our priority.
+    </p>
+    <div class="hero-pills">
+      <div class="pill">🪥 General Dentistry</div>
+      <div class="pill">✨ Cosmetic Dentistry</div>
+      <div class="pill">😬 Orthodontics</div>
+      <div class="pill">💉 Pain-Free Treatment</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Yrs Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Happy Patients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Treatments</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#appointment" class="btn-primary">Book Free Consultation</a>
+      <a href="tel:+918390256393" class="btn-outline">📞 Call Now</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <!-- ✏️ REPLACE: <img src="pranali-photo.jpg" alt="Dr. Pranali Shahare"> -->
+      <div class="hero-img-placeholder">
+        <div class="ph-icon">👩‍⚕️</div>
+        <p>Add Dr. Pranali's photo here<br>Replace this placeholder with her image</p>
+      </div>
+    </div>
+    <div class="hero-card1">
+      <div class="card1-icon">⭐</div>
+      <div>
+        <div class="card1-label">Highly Rated</div>
+        <div class="card1-sub">Trusted by Brahmpuri families</div>
+      </div>
+    </div>
+    <div class="hero-card2">
+      <div class="card2-num">100%</div>
+      <div class="card2-sub">Gentle & Safe Care</div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── TRUST BAR ────────── -->
+<div id="trust">
+  <div class="trust-item"><span>🎓</span> BDS Qualified Dentist</div>
+  <div class="trust-item"><span>🦷</span> Modern Equipment</div>
+  <div class="trust-item"><span>💉</span> Pain-Free Procedures</div>
+  <div class="trust-item"><span>🧼</span> Sterilized & Safe Clinic</div>
+  <div class="trust-item"><span>👨‍👩‍👧</span> Family-Friendly Care</div>
+</div>
+
+<!-- ────────── ABOUT ────────── -->
+<section id="about">
+  <div class="about-img-wrap reveal">
+    <div class="about-img-box">
+      <!-- ✏️ REPLACE: <img src="pranali-clinic.jpg" alt="Dr. Pranali Shahare at Christanand Hospital"> -->
+      <div class="about-img-placeholder">
+        <div class="ph-icon">🏥</div>
+        <p>Add clinic or doctor photo here</p>
+      </div>
+    </div>
+    <div class="about-badge">
+      <strong>BDS</strong>
+      <span>Certified</span>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="section-label">About the Doctor</div>
+    <h2 class="section-title">Meet <em>Dr. Pranali Shahare</em></h2>
+    <p class="section-sub">
+      Dr. Pranali Shahare is a dedicated BDS-qualified dentist practising at Christanand Hospital, Brahmpuri. With a patient-first philosophy, she brings skill, warmth and the latest dental techniques to every appointment — making even the most nervous patients feel completely at ease.
+    </p>
+    <div class="cred-grid">
+      <div class="cred-item">
+        <div class="cred-icon">🎓</div>
+        <div>
+          <div class="cred-title">BDS Degree</div>
+          <div class="cred-desc">Bachelor of Dental Surgery — fully qualified & registered</div>
+        </div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-icon">🏅</div>
+        <div>
+          <div class="cred-title">Registered Practitioner</div>
+          <div class="cred-desc">Dental Council of India (DCI) registered</div>
+        </div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-icon">🔬</div>
+        <div>
+          <div class="cred-title">Modern Techniques</div>
+          <div class="cred-desc">Up-to-date with latest dental procedures & technology</div>
+        </div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-icon">❤️</div>
+        <div>
+          <div class="cred-title">Gentle & Caring</div>
+          <div class="cred-desc">Special attention to anxious patients and children</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-cta-row">
+      <a href="#appointment" class="btn-primary">Schedule a Visit</a>
+      <a href="tel:+918390256393" class="phone-chip">📞 +91 83902 56393</a>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── SERVICES ────────── -->
+<section id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Dental Services at<br><em>Christanand Hospital</em></h2>
+    </div>
+    <a href="#appointment" class="btn-primary" style="white-space:nowrap">Book Appointment</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-icon">🪥</div>
+      <div class="svc-title">General Dentistry</div>
+      <div class="svc-desc">Complete oral healthcare for every member of your family, from routine check-ups to essential treatments.</div>
+      <ul class="svc-list">
+        <li>Dental Check-up & Cleaning</li>
+        <li>Scaling & Polishing</li>
+        <li>Tooth-Colored Fillings</li>
+        <li>Root Canal Treatment</li>
+        <li>Tooth Extraction</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-num">02</div>
+      <div class="svc-icon">✨</div>
+      <div class="svc-title">Cosmetic Dentistry</div>
+      <div class="svc-desc">Enhance the beauty of your smile with aesthetic treatments designed for natural, stunning results.</div>
+      <ul class="svc-list">
+        <li>Teeth Whitening / Bleaching</li>
+        <li>Dental Veneers</li>
+        <li>Composite Bonding</li>
+        <li>Smile Makeover</li>
+        <li>Tooth Reshaping</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-num">03</div>
+      <div class="svc-icon">😬</div>
+      <div class="svc-title">Orthodontics</div>
+      <div class="svc-desc">Straighten your teeth and correct your bite for improved health and a more confident smile.</div>
+      <ul class="svc-list">
+        <li>Metal Braces</li>
+        <li>Ceramic Braces</li>
+        <li>Clear Aligners / Invisalign</li>
+        <li>Retainers</li>
+        <li>Space Maintainers</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-num">04</div>
+      <div class="svc-icon">🦷</div>
+      <div class="svc-title">Restorative Care</div>
+      <div class="svc-desc">Rebuild damaged or missing teeth and restore full function with long-lasting solutions.</div>
+      <ul class="svc-list">
+        <li>Dental Crowns & Bridges</li>
+        <li>Dentures (Full & Partial)</li>
+        <li>Dental Implants</li>
+        <li>Inlays & Onlays</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-num">05</div>
+      <div class="svc-icon">🍼</div>
+      <div class="svc-title">Pediatric Dentistry</div>
+      <div class="svc-desc">Child-friendly dental care in a warm, reassuring environment your little ones will look forward to.</div>
+      <ul class="svc-list">
+        <li>Children's Dental Check-up</li>
+        <li>Fluoride Treatment</li>
+        <li>Pit & Fissure Sealants</li>
+        <li>Milk Teeth Treatment</li>
+      </ul>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-num">06</div>
+      <div class="svc-icon">🫀</div>
+      <div class="svc-title">Gum Care</div>
+      <div class="svc-desc">Healthy gums are the foundation of a healthy smile — expert periodontal care to protect them.</div>
+      <ul class="svc-list">
+        <li>Gum Disease Treatment</li>
+        <li>Deep Cleaning (SRP)</li>
+        <li>Gum Contouring</li>
+        <li>Periodontal Maintenance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── WHY CHOOSE ────────── -->
+<section id="why">
+  <div class="why-layout">
+    <div class="reveal">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Dentistry That Feels<br><em>Different</em> in Brahmpuri</h2>
+      <p class="section-sub">At Christanand Hospital, we go beyond treating teeth — we build trust, ensure comfort, and deliver results you'll smile about.</p>
+      <div class="why-grid-cards">
+        <div class="why-card">
+          <div class="why-card-icon">💉</div>
+          <div class="why-card-title">Pain-Free Treatment</div>
+          <div class="why-card-desc">Advanced techniques ensuring you feel comfortable throughout</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🔬</div>
+          <div class="why-card-title">Modern Equipment</div>
+          <div class="why-card-desc">Digital X-rays, intraoral cameras & sterilized instruments</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">⏰</div>
+          <div class="why-card-title">Flexible Timings</div>
+          <div class="why-card-desc">Morning & evening slots to fit your schedule</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">💰</div>
+          <div class="why-card-title">Affordable Pricing</div>
+          <div class="why-card-desc">Quality dental care at prices accessible to all families</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🧼</div>
+          <div class="why-card-title">Hygienic & Safe</div>
+          <div class="why-card-desc">Strict sterilization & infection control protocols</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">👨‍👩‍👧</div>
+          <div class="why-card-title">Family-Friendly</div>
+          <div class="why-card-desc">Comfortable care for patients of all ages, including kids</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-right reveal">
+      <div class="why-img-stack">
+        <div class="why-main-img">
+          <!-- ✏️ REPLACE: <img src="clinic-photo.jpg" alt="Christanand Hospital Dental Clinic"> -->
+          <div class="why-img-ph">🏥</div>
+        </div>
+        <div class="why-float-card">
+          <div class="wfc-icon">😊</div>
+          <div>
+            <div class="wfc-num">500+</div>
+            <div class="wfc-label">Happy Patients in Brahmpuri</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── TESTIMONIALS ────────── -->
+<section id="testimonials">
+  <div class="reveal">
+    <div class="section-label">Patient Reviews</div>
+    <h2 class="section-title">What Patients Say About<br><em>Dr. Pranali</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testi-text">"Dr. Pranali is so gentle and patient. I had a severe toothache and she treated me so carefully. The pain was gone the same day! Best dentist in Brahmpuri without a doubt."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">RP</div>
+        <div>
+          <div class="testi-name">Riya Pawar</div>
+          <div class="testi-role">Root Canal Patient · Brahmpuri</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testi-text">"Got my teeth whitening done at Christanand Hospital and the results are amazing! Dr. Pranali explained everything clearly and made me feel so comfortable. Highly recommended!"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">SM</div>
+        <div>
+          <div class="testi-name">Sneha More</div>
+          <div class="testi-role">Teeth Whitening Patient</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="testi-text">"My son was very scared of dentists but Dr. Pranali handled him so well! She was so kind and patient with him. We now visit regularly without any fuss. Thank you so much, Doctor!"</div>
+      <div class="testi-author">
+        <div class="testi-avatar">AK</div>
+        <div>
+          <div class="testi-name">Ajay Kale</div>
+          <div class="testi-role">Pediatric Care Parent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── APPOINTMENT ────────── -->
+<section id="appointment">
+  <div class="appt-left reveal">
+    <div class="section-label">Book Appointment</div>
+    <h2 class="section-title">Visit Us at<br><em>Christanand Hospital</em></h2>
+    <p class="section-sub">Take the first step toward a healthier, more beautiful smile. We'll get back to you within a few hours.</p>
+    <div class="appt-info-cards">
+      <div class="appt-info-card">
+        <div class="aic-icon">📍</div>
+        <div>
+          <div class="aic-label">Location</div>
+          <div class="aic-value">Christanand Hospital, Brahmpuri<br>Maharashtra, India</div>
+        </div>
+      </div>
+      <div class="appt-info-card">
+        <div class="aic-icon">📞</div>
+        <div>
+          <div class="aic-label">Phone & WhatsApp</div>
+          <div class="aic-value"><a href="tel:+918390256393" style="color:var(--blue);text-decoration:none">+91 83902 56393</a></div>
+        </div>
+      </div>
+      <div class="appt-info-card">
+        <div class="aic-icon">🕐</div>
+        <div>
+          <div class="aic-label">Working Hours</div>
+          <div class="aic-value">Mon–Sat: 9:00 AM – 8:00 PM<br>Sunday: By Appointment</div>
+        </div>
+      </div>
+      <div class="appt-info-card">
+        <div class="aic-icon">✅</div>
+        <div>
+          <div class="aic-label">First Visit</div>
+          <div class="aic-value">Free consultation for new patients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="appt-form reveal">
+    <h3>Book Your Appointment</h3>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="Full name">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Treatment Needed</label>
+      <select>
+        <option value="">Select a service</option>
+        <option>Dental Check-up & Cleaning</option>
+        <option>Teeth Whitening</option>
+        <option>Dental Filling</option>
+        <option>Root Canal Treatment</option>
+        <option>Braces / Clear Aligners</option>
+        <option>Veneers / Smile Makeover</option>
+        <option>Tooth Extraction</option>
+        <option>Dentures / Implants</option>
+        <option>Child Dental Care</option>
+        <option>Other / Not Sure</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Preferred Timing</label>
+      <input type="text" placeholder="e.g. Weekday morning, Saturday evening">
+    </div>
+    <div class="form-group">
+      <label>Message (Optional)</label>
+      <textarea placeholder="Any specific concern or question for Dr. Pranali?"></textarea>
+    </div>
+    <button class="form-submit" onclick="alert('Thank you! Dr. Pranali\'s team will call you shortly to confirm your appointment. You can also WhatsApp on +91 83902 56393.')">
+      Confirm Appointment →
+    </button>
+  </div>
+</section>
+
+<!-- ────────── CONTACT ────────── -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Find Us</div>
+    <h2 class="section-title">Come Visit Us in <em>Brahmpuri</em></h2>
+  </div>
+  <div class="contact-layout">
+    <div class="contact-cards reveal">
+      <div class="contact-card">
+        <div class="cc-icon">📍</div>
+        <div>
+          <div class="cc-label">Address</div>
+          <div class="cc-value">Christanand Hospital<br>Brahmpuri, Maharashtra, India</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">📞</div>
+        <div>
+          <div class="cc-label">Phone / WhatsApp</div>
+          <div class="cc-value"><a href="tel:+918390256393">+91 83902 56393</a><br><span style="font-size:.8rem;color:var(--muted)">WhatsApp on same number</span></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">🕐</div>
+        <div>
+          <div class="cc-label">Clinic Hours</div>
+          <div class="cc-value">Mon – Sat: 9:00 AM – 8:00 PM<br>Sunday: By Appointment Only</div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-icon">👩‍⚕️</div>
+        <div>
+          <div class="cc-label">Doctor</div>
+          <div class="cc-value">Dr. Pranali Shahare, BDS<br><span style="font-size:.8rem;color:var(--muted)">Dental Surgeon</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="map-placeholder">
+        <div class="map-icon">📍</div>
+        <div><strong>Christanand Hospital, Brahmpuri</strong></div>
+        <div style="font-size:.8rem;color:var(--muted)">Maharashtra, India</div>
+        <a href="https://maps.google.com/?q=Brahmpuri+Maharashtra" target="_blank"
+           style="margin-top:10px;background:var(--blue);color:#fff;padding:10px 22px;border-radius:30px;text-decoration:none;font-size:.82rem;font-weight:600">
+          Open in Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── FOOTER ────────── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo" style="display:inline-flex">
+        <div class="logo-icon">🦷</div>
+        <div>
+          <span class="logo-text">Christanand Hospital</span>
+          <span class="logo-sub">Dr. Pranali Shahare · BDS</span>
+        </div>
+      </div>
+      <p>Providing gentle, modern dental care to the families of Brahmpuri and surrounding areas. Your smile is in safe hands.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">General Dentistry</a></li>
+        <li><a href="#services">Cosmetic Dentistry</a></li>
+        <li><a href="#services">Orthodontics</a></li>
+        <li><a href="#services">Restorative Care</a></li>
+        <li><a href="#services">Pediatric Dentistry</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Dr. Pranali</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#testimonials">Patient Reviews</a></li>
+        <li><a href="#appointment">Book Appointment</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+918390256393">📞 +91 83902 56393</a></li>
+        <li><a href="https://wa.me/918390256393">💬 WhatsApp Us</a></li>
+        <li><a href="#">📍 Christanand Hospital, Brahmpuri</a></li>
+        <li><a href="#appointment">🗓 Book Online</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Christanand Hospital · Dr. Pranali Shahare BDS · Brahmpuri, Maharashtra</span>
+    <div class="social-links">
+      <a href="#" class="social-link" title="Instagram">📷</a>
+      <a href="#" class="social-link" title="Facebook">📘</a>
+      <a href="https://wa.me/918390256393" class="social-link" title="WhatsApp">💬</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 90);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Navbar shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script>
+</body>
+</html>

@@ -21,7 +21,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 99;
       display: flex; align-items: center; justify-content: space-between;
@@ -36,11 +36,11 @@
     .logo-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--dark); line-height: 1.2; }
     .logo-sub  { font-size: .56rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; display: block; }
     .nav-right { display: flex; align-items: center; gap: 12px; }
-    .nav-phone { font-size: .8rem; font-weight: 600; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 5px; }
+    .nav-phone { font-size: .8rem; font-weight: 600; color: var(--blue); text-decoration: none; }
     .nav-cta { background: var(--blue); color: #fff; padding: 9px 18px; border-radius: 22px; font-size: .8rem; font-weight: 600; text-decoration: none; transition: background .2s; white-space: nowrap; }
     .nav-cta:hover { background: var(--blue2); }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       display: grid; grid-template-columns: 1.1fr 0.9fr;
@@ -49,10 +49,7 @@
       background: linear-gradient(135deg, #f0f7ff 0%, #e2f0fb 100%);
       position: relative; overflow: hidden;
     }
-    /* Soft tooth shapes background */
-    .bg-deco {
-      position: absolute; inset: 0; pointer-events: none; opacity: .035;
-    }
+    .bg-deco { position: absolute; inset: 0; pointer-events: none; opacity: .035; }
     .hero-left { position: relative; z-index: 1; }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 7px;
@@ -70,47 +67,31 @@
     .hero-btns { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
     .btn-blue { background: var(--blue); color: #fff; padding: 12px 26px; border-radius: 26px; font-size: .86rem; font-weight: 600; text-decoration: none; box-shadow: 0 7px 20px rgba(26,110,181,0.24); transition: all .2s; }
     .btn-blue:hover { background: var(--blue2); transform: translateY(-2px); }
-    .btn-out  { border: 2px solid var(--blue); color: var(--blue); padding: 10px 26px; border-radius: 26px; font-size: .86rem; font-weight: 600; text-decoration: none; transition: all .2s; }
+    .btn-out { border: 2px solid var(--blue); color: var(--blue); padding: 10px 26px; border-radius: 26px; font-size: .86rem; font-weight: 600; text-decoration: none; transition: all .2s; }
     .btn-out:hover { background: var(--blue); color: #fff; }
     .stats-row { display: flex; gap: 0; margin-top: 28px; background: var(--white); border: 1px solid var(--border); border-radius: 13px; overflow: hidden; max-width: 320px; box-shadow: 0 5px 18px rgba(26,110,181,0.07); }
     .stat { flex: 1; padding: 14px 10px; text-align: center; border-right: 1px solid var(--border); }
     .stat:last-child { border: none; }
     .stat-n { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 600; color: var(--blue); line-height: 1; }
     .stat-l { font-size: .6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
-
     .hero-right { display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
     .hero-photo { width: 82%; max-width: 320px; aspect-ratio: 3/4; border-radius: 50% 50% 46% 54% / 52% 48% 52% 48%; overflow: hidden; border: 5px solid var(--white); box-shadow: 0 22px 60px rgba(26,110,181,0.17); }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 
-    /* ── ICON STRIP ── */
-    .icon-strip {
-      background: var(--dark); padding: 18px 5%;
-      display: flex; justify-content: center; gap: 36px; flex-wrap: wrap;
-    }
+    /* ICON STRIP */
+    .icon-strip { background: var(--dark); padding: 18px 5%; display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
     .is-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.75); font-size: .8rem; font-weight: 500; }
     .is-item span { font-size: 1.1rem; }
 
-    /* ── ABOUT ── */
-    #about {
-      display: grid; grid-template-columns: 0.85fr 1.15fr;
-      gap: 56px; align-items: center;
-      padding: 80px 5%; background: var(--off);
-    }
-    /* Dental illustration card */
-    .about-card {
-      background: linear-gradient(135deg, var(--bluebg), #daeeff);
-      border-radius: 22px; padding: 36px 28px;
-      border: 1px solid var(--border);
-      box-shadow: 0 12px 40px rgba(26,110,181,0.09);
-      display: flex; flex-direction: column; align-items: center; text-align: center;
-    }
+    /* ABOUT */
+    #about { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; padding: 80px 5%; background: var(--off); }
+    .about-card { background: linear-gradient(135deg, var(--bluebg), #daeeff); border-radius: 22px; padding: 36px 28px; border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(26,110,181,0.09); display: flex; flex-direction: column; align-items: center; text-align: center; }
     .about-card svg { width: 100px; height: 100px; }
     .about-card-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--dark); margin-top: 16px; }
     .about-card-reg  { font-size: .7rem; color: var(--muted); background: var(--white); border: 1px solid var(--border); padding: 3px 12px; border-radius: 20px; margin-top: 6px; display: inline-block; }
     .about-badges { display: flex; gap: 8px; margin-top: 14px; }
     .abadge { flex: 1; background: var(--white); border: 1px solid var(--border); border-radius: 9px; padding: 9px 6px; text-align: center; font-size: .7rem; font-weight: 500; color: var(--dark); }
     .abadge span { display: block; font-size: 1.2rem; margin-bottom: 3px; }
-
     .chip { display: inline-block; background: var(--bluebg); border: 1px solid var(--border); color: var(--blue); font-size: .65rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 11px; border-radius: 20px; margin-bottom: 12px; }
     h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.5vw, 2.4rem); font-weight: 600; line-height: 1.2; color: var(--dark); }
     h2 em { font-style: italic; color: var(--blue); font-weight: 400; }
@@ -124,19 +105,23 @@
     .ph-btn { display: flex; align-items: center; gap: 7px; background: var(--bluebg); border: 1px solid var(--border); color: var(--blue); padding: 9px 15px; border-radius: 22px; font-size: .82rem; font-weight: 600; text-decoration: none; transition: all .2s; }
     .ph-btn:hover { background: var(--blue); color: #fff; }
 
-    /* ── SERVICES ── */
+    /* SERVICES — always 2 columns, even on mobile */
     #services { padding: 80px 5%; background: var(--white); }
     .sec-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
-    .sgrid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-    .sc { background: var(--off); border: 1.5px solid var(--border); border-radius: 14px; padding: 24px 20px; transition: all .25s; }
+    .sgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;  /* always 2 side by side */
+      gap: 16px;
+    }
+    .sc { background: var(--off); border: 1.5px solid var(--border); border-radius: 14px; padding: 22px 18px; transition: all .25s; }
     .sc:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(26,110,181,0.1); border-color: var(--blue2); background: var(--white); }
-    .sc-ico { font-size: 1.7rem; margin-bottom: 10px; }
-    .sc-t { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--dark); margin-bottom: 7px; }
+    .sc-ico { font-size: 1.6rem; margin-bottom: 10px; }
+    .sc-t { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 7px; }
     .sc-ul { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
-    .sc-ul li { font-size: .76rem; color: var(--text); padding-left: 13px; position: relative; }
+    .sc-ul li { font-size: .75rem; color: var(--text); padding-left: 13px; position: relative; }
     .sc-ul li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; font-size: .68rem; }
 
-    /* ── TESTIMONIALS ── */
+    /* TESTIMONIALS */
     #testimonials { padding: 80px 5%; background: var(--off); text-align: center; }
     .tgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 36px; text-align: left; }
     .tc { background: var(--white); border: 1.5px solid var(--border); border-radius: 14px; padding: 22px; transition: all .22s; }
@@ -148,11 +133,8 @@
     .tn { font-weight: 600; font-size: .8rem; color: var(--dark); }
     .tr { font-size: .67rem; color: var(--muted); }
 
-    /* ── APPOINTMENT ── */
-    #appointment {
-      padding: 80px 5%; background: var(--white);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
-    }
+    /* APPOINTMENT */
+    #appointment { padding: 80px 5%; background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .icards { display: flex; flex-direction: column; gap: 9px; margin-top: 20px; }
     .icard { display: flex; align-items: center; gap: 11px; background: var(--off); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
     .ic-box { width: 36px; height: 36px; border-radius: 8px; background: var(--bluebg); display: flex; align-items: center; justify-content: center; font-size: .95rem; flex-shrink: 0; }
@@ -171,15 +153,9 @@
     .fsub { width: 100%; padding: 11px; border-radius: 8px; background: var(--blue); color: #fff; border: none; font-size: .88rem; font-weight: 600; cursor: pointer; margin-top: 2px; transition: all .2s; font-family: inherit; }
     .fsub:hover { background: var(--blue2); transform: translateY(-1px); }
 
-    /* ── FOOTER (replaces separate contact section) ── */
-    footer {
-      background: var(--dark); color: rgba(255,255,255,.5);
-      padding: 48px 5% 22px;
-    }
-    .ftop {
-      display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 36px;
-      padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.08);
-    }
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,.5); padding: 48px 5% 22px; }
+    .ftop { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.08); }
     .fb p { font-size: .77rem; line-height: 1.7; margin-top: 10px; color: rgba(255,255,255,.38); }
     .fb .logo-name { color: #fff; font-size: 1rem; }
     .fb .logo-sub  { color: #7bbde8; }
@@ -204,24 +180,30 @@
     /* RESPONSIVE */
     @media(max-width:860px) {
       #hero { grid-template-columns:1fr; padding:100px 5% 50px; gap:30px; }
-      .hero-right { order:-1; height:280px; }
-      .hero-photo { width:60%; max-width:220px; }
+      .hero-right { order:-1; height:260px; }
+      .hero-photo { width:55%; max-width:200px; }
       #about { grid-template-columns:1fr; gap:30px; }
       .about-card { max-width:360px; margin:0 auto; }
       #appointment { grid-template-columns:1fr; gap:30px; }
-      .sgrid { grid-template-columns:1fr 1fr; }
       .tgrid { grid-template-columns:1fr 1fr; }
       .ftop { grid-template-columns:1fr 1fr; }
       .nav-phone { display:none; }
+      /* services stay 2 col on tablet too */
+      .sgrid { grid-template-columns: 1fr 1fr; }
     }
-    @media(max-width:560px) {
+    @media(max-width:480px) {
       nav { padding:12px 4%; }
       #hero,#about,#services,#testimonials,#appointment { padding:55px 4%; }
-      #hero { padding-top:90px; }
-      .sgrid,.tgrid { grid-template-columns:1fr; }
+      #hero { padding-top:88px; }
+      /* services STILL 2 col on small phones — compact cards */
+      .sgrid { grid-template-columns: 1fr 1fr; gap:10px; }
+      .sc { padding:16px 12px; }
+      .sc-t { font-size:.88rem; }
+      .sc-ul li { font-size:.7rem; }
       .frow2 { grid-template-columns:1fr; }
+      .tgrid { grid-template-columns:1fr; }
       .ftop { grid-template-columns:1fr; }
-      .icon-strip { gap:16px; padding:14px 4%; }
+      .icon-strip { gap:14px; padding:14px 4%; }
     }
   </style>
 </head>
@@ -251,7 +233,6 @@
     <path d="M150 300C130 300 115 315 115 338c0 18 4 38 9 55l9 54c2 9 7 9 9 0l9-36h18l9 36c2 9 7 9 9 0l9-54c5-17 9-37 9-55 0-23-15-38-35-38z" fill="#1a6eb5"/>
     <path d="M720 380C705 380 694 391 694 406c0 12 3 25 6 36l6 36c1 6 5 6 6 0l6-24h12l6 24c1 6 5 6 6 0l6-36c3-11 6-24 6-36 0-15-10-26-24-26z" fill="#1a6eb5"/>
   </svg>
-
   <div class="hero-left">
     <div class="hero-tag"><div class="dot"></div>Brahmpuri · Christanand Hospital</div>
     <h1>Your Smile<br>Deserves <em>Expert</em><br>Care.</h1>
@@ -288,21 +269,15 @@
 <section id="about">
   <div class="about-card reveal">
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Tooth shape -->
       <path d="M50 8C40 8 33 16 33 27c0 8 2 18 5 26l4 22c1 5 4 5 5 0l3-12h10l3 12c1 5 4 5 5 0l4-22c3-8 5-18 5-26 0-11-7-19-17-19z" fill="#1a6eb5" opacity=".15" stroke="#1a6eb5" stroke-width="1.2"/>
-      <!-- Shine -->
       <path d="M40 16c0 0-3 4-3 8" stroke="#2589d4" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
-      <!-- Center doctor circle -->
       <circle cx="50" cy="52" r="22" fill="white" stroke="#d8eaf5" stroke-width="1"/>
-      <!-- Stethoscope -->
       <path d="M43 45c0 0-2 4-2 8 0 4 4 7 9 7s9-3 9-7c0-4-2-8-2-8" stroke="#1a6eb5" stroke-width="1.8" fill="none" stroke-linecap="round"/>
       <circle cx="50" cy="62" r="2.5" fill="#1a6eb5"/>
       <line x1="50" y1="64.5" x2="50" y2="69" stroke="#1a6eb5" stroke-width="1.8" stroke-linecap="round"/>
       <circle cx="50" cy="71" r="1.8" stroke="#1a6eb5" stroke-width="1.2" fill="none"/>
-      <!-- Plus -->
       <rect x="47" y="40" width="6" height="2.5" rx="1.2" fill="#1a6eb5" opacity=".5"/>
       <rect x="48.75" y="38.25" width="2.5" height="6" rx="1.2" fill="#1a6eb5" opacity=".5"/>
-      <!-- Sparkles -->
       <circle cx="78" cy="22" r="2" fill="#2589d4" opacity=".35"/>
       <circle cx="82" cy="34" r="1.4" fill="#1a6eb5" opacity=".28"/>
       <circle cx="22" cy="30" r="1.6" fill="#2589d4" opacity=".3"/>
@@ -331,19 +306,70 @@
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES — 2 columns always -->
 <section id="services">
   <div class="sec-top reveal">
     <div><div class="chip">What We Offer</div><h2>Our <em>Services</em></h2></div>
-    <a href="#appointment" class="btn-blue" style="white-space:nowrap;flex-shrink:0;font-size:.82rem;padding:10px 18px">Book Now</a>
+    <a href="#appointment" class="btn-blue" style="white-space:nowrap;flex-shrink:0;font-size:.8rem;padding:10px 16px">Book Now</a>
   </div>
   <div class="sgrid">
-    <div class="sc reveal"><div class="sc-ico">🪥</div><div class="sc-t">General Dentistry</div><ul class="sc-ul"><li>Cleaning & Check-up</li><li>Tooth Fillings</li><li>Root Canal</li><li>Extraction</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">✨</div><div class="sc-t">Cosmetic Dentistry</div><ul class="sc-ul"><li>Teeth Whitening</li><li>Veneers</li><li>Smile Makeover</li><li>Bonding</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">😬</div><div class="sc-t">Orthodontics</div><ul class="sc-ul"><li>Metal Braces</li><li>Ceramic Braces</li><li>Clear Aligners</li><li>Retainers</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">🦷</div><div class="sc-t">Restorative Care</div><ul class="sc-ul"><li>Crowns & Bridges</li><li>Dentures</li><li>Implants</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">🍼</div><div class="sc-t">Pediatric Dentistry</div><ul class="sc-ul"><li>Kids Check-up</li><li>Fluoride Treatment</li><li>Milk Teeth Care</li></ul></div>
-    <div class="sc reveal"><div class="sc-ico">🫀</div><div class="sc-t">Gum Care</div><ul class="sc-ul"><li>Gum Treatment</li><li>Deep Cleaning</li><li>Gum Contouring</li></ul></div>
+    <div class="sc reveal">
+      <div class="sc-ico">🪥</div>
+      <div class="sc-t">General Dentistry</div>
+      <ul class="sc-ul">
+        <li>Cleaning &amp; Check-up</li>
+        <li>Tooth Fillings</li>
+        <li>Root Canal</li>
+        <li>Extraction</li>
+      </ul>
+    </div>
+    <div class="sc reveal">
+      <div class="sc-ico">✨</div>
+      <div class="sc-t">Cosmetic Dentistry</div>
+      <ul class="sc-ul">
+        <li>Teeth Whitening</li>
+        <li>Veneers</li>
+        <li>Smile Makeover</li>
+        <li>Bonding</li>
+      </ul>
+    </div>
+    <div class="sc reveal">
+      <div class="sc-ico">😬</div>
+      <div class="sc-t">Orthodontics</div>
+      <ul class="sc-ul">
+        <li>Metal Braces</li>
+        <li>Ceramic Braces</li>
+        <li>Clear Aligners</li>
+        <li>Retainers</li>
+      </ul>
+    </div>
+    <div class="sc reveal">
+      <div class="sc-ico">🦷</div>
+      <div class="sc-t">Restorative Care</div>
+      <ul class="sc-ul">
+        <li>Crowns &amp; Bridges</li>
+        <li>Dentures</li>
+        <li>Implants</li>
+      </ul>
+    </div>
+    <div class="sc reveal">
+      <div class="sc-ico">🍼</div>
+      <div class="sc-t">Pediatric Dentistry</div>
+      <ul class="sc-ul">
+        <li>Kids Check-up</li>
+        <li>Fluoride Treatment</li>
+        <li>Milk Teeth Care</li>
+      </ul>
+    </div>
+    <div class="sc reveal">
+      <div class="sc-ico">🫀</div>
+      <div class="sc-t">Gum Care</div>
+      <ul class="sc-ul">
+        <li>Gum Treatment</li>
+        <li>Deep Cleaning</li>
+        <li>Gum Contouring</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -353,7 +379,7 @@
   <div class="tgrid">
     <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"Dr. Pranali is so gentle and caring. Severe toothache was gone the same day — best dentist in Brahmpuri!"</div><div class="ta"><div class="tav">RP</div><div><div class="tn">Riya Pawar</div><div class="tr">Root Canal Patient</div></div></div></div>
     <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"Teeth whitening results were amazing! She explained everything clearly and made me feel so comfortable."</div><div class="ta"><div class="tav">SM</div><div><div class="tn">Sneha More</div><div class="tr">Whitening Patient</div></div></div></div>
-    <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"My son was scared of dentists but Dr. Pranali handled him so kindly. We visit regularly now without any trouble!"</div><div class="ta"><div class="tav">AK</div><div><div class="tn">Ajay Kale</div><div class="tr">Pediatric Care Parent</div></div></div></div>
+    <div class="tc reveal"><div class="stars">★★★★★</div><div class="tt">"My son was scared of dentists but Dr. Pranali handled him so kindly. We visit regularly now — no trouble at all!"</div><div class="ta"><div class="tav">AK</div><div><div class="tn">Ajay Kale</div><div class="tr">Pediatric Care Parent</div></div></div></div>
   </div>
 </section>
 
@@ -364,9 +390,18 @@
     <h2>Visit <em>Christanand Hospital</em></h2>
     <p class="sub">First consultation is free. We'll confirm your slot shortly.</p>
     <div class="icards">
-      <div class="icard"><div class="ic-box">📍</div><div><div class="ic-l">Address</div><div class="ic-v">Christanand Hospital, Brahmpuri, Maharashtra</div></div></div>
-      <div class="icard"><div class="ic-box">📞</div><div><div class="ic-l">Phone & WhatsApp</div><div class="ic-v"><a href="tel:+918390256393" style="color:var(--blue);text-decoration:none">+91 83902 56393</a></div></div></div>
-      <div class="ic-v">Mon–Sat: 10 AM–2 PM &amp; 4 PM–6 PM &nbsp;·&nbsp; Sun: Closed</div>
+      <div class="icard">
+        <div class="ic-box">📍</div>
+        <div><div class="ic-l">Address</div><div class="ic-v">Christanand Hospital, Brahmpuri, Maharashtra</div></div>
+      </div>
+      <div class="icard">
+        <div class="ic-box">📞</div>
+        <div><div class="ic-l">Phone &amp; WhatsApp</div><div class="ic-v"><a href="tel:+918390256393" style="color:var(--blue);text-decoration:none">+91 83902 56393</a></div></div>
+      </div>
+      <div class="icard">
+        <div class="ic-box">🕐</div>
+        <div><div class="ic-l">Clinic Hours</div><div class="ic-v">Mon–Sat: 10 AM–2 PM &amp; 4 PM–6 PM &nbsp;·&nbsp; Sun: Closed</div></div>
+      </div>
     </div>
   </div>
   <div class="aform reveal">
@@ -375,10 +410,11 @@
       <div class="fg"><label>Your Name</label><input id="f-name" type="text" placeholder="Full name"/></div>
       <div class="fg"><label>Phone Number</label><input id="f-phone" type="tel" placeholder="+91 XXXXX XXXXX"/></div>
     </div>
-    <div class="fg"><label>Treatment Needed</label>
+    <div class="fg">
+      <label>Treatment Needed</label>
       <select id="f-service">
         <option value="">Select a service</option>
-        <option>Dental Check-up & Cleaning</option>
+        <option>Dental Check-up &amp; Cleaning</option>
         <option>Teeth Whitening</option>
         <option>Dental Filling</option>
         <option>Root Canal Treatment</option>
@@ -395,7 +431,7 @@
   </div>
 </section>
 
-<!-- FOOTER — contact info lives here only, not repeated above -->
+<!-- FOOTER -->
 <footer>
   <div class="ftop">
     <div class="fb">
@@ -412,7 +448,7 @@
         <li><a href="#services">Cosmetic Dentistry</a></li>
         <li><a href="#services">Orthodontics</a></li>
         <li><a href="#services">Pediatric Care</a></li>
-        <li><a href="#services">Restorative & Gum</a></li>
+        <li><a href="#services">Restorative &amp; Gum</a></li>
       </ul>
     </div>
     <div class="fc">
@@ -437,11 +473,11 @@
 
 <script>
   const obs = new IntersectionObserver(entries => {
-    entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*70); });
-  }, {threshold:.1});
+    entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'),i*70); });
+  },{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-  function sendWA() {
+  function sendWA(){
     const n=document.getElementById('f-name').value.trim();
     const p=document.getElementById('f-phone').value.trim();
     const s=document.getElementById('f-service').value;
@@ -458,4 +494,4 @@
   }
 </script>
 </body>
-                                                                                                                                                                                                                                         </html>
+</html>
